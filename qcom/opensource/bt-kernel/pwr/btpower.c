@@ -2424,9 +2424,9 @@ int bt_kernel_panic(char *arg) {
 			__func__);
 		memset(&CrashInfo, 0, sizeof(CrashInfo));
 		strlcpy(CrashInfo. PrimaryReason,
-			default_crash_reason, strlen(default_crash_reason));
+			default_crash_reason,sizeof(CrashInfo.PrimaryReason));
 		strlcpy(CrashInfo. SecondaryReason,
-			default_crash_reason, strlen(default_crash_reason));
+			default_crash_reason, sizeof(CrashInfo.PrimaryReason));
 		ret = -EFAULT;
 	}
 
