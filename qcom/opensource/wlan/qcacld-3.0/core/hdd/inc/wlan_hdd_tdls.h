@@ -26,6 +26,15 @@
 
 #include "qca_vendor.h"
 
+/*
+ * 6.1.191 backports the TDLS MLO tdls_mgmt() signature with link_id,
+ * but LINUX_VERSION_CODE is still 6.1.x.
+ */
+#define WLAN_TDLS_MGMT_HAS_LINK_ID \
+	(LINUX_VERSION_CODE >= KERNEL_VERSION(6, 5, 0) || \
+	 (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 1, 191) && \
+	  LINUX_VERSION_CODE < KERNEL_VERSION(6, 2, 0)))
+
 struct hdd_context;
 
 #ifdef FEATURE_WLAN_TDLS
@@ -142,7 +151,7 @@ int wlan_hdd_cfg80211_tdls_mgmt(struct wiphy *wiphy,
 				uint16_t status_code, uint32_t peer_capability,
 				bool initiator, const uint8_t *buf,
 				size_t len, int link_id);
-#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 5, 0))
+#elif WLAN_TDLS_MGMT_HAS_LINK_ID
 int wlan_hdd_cfg80211_tdls_mgmt(struct wiphy *wiphy,
 				struct net_device *dev, const u8 *peer,
 				int link_id, u8 action_code,

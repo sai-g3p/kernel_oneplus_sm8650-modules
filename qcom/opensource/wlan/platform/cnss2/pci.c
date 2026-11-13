@@ -191,7 +191,7 @@ static const struct mhi_channel_config cnss_mhi_channels[] = {
 		.lpm_notify = false,
 		.offload_channel = false,
 		.doorbell_mode_switch = false,
-		.auto_queue = true,
+		.auto_queue = false,
 	},
 /* All MHI satellite config to be at the end of data struct */
 #if IS_ENABLED(CONFIG_MHI_SATELLITE)
@@ -309,7 +309,7 @@ static const struct mhi_channel_config cnss_mhi_channels_no_diag[] = {
 		.lpm_notify = false,
 		.offload_channel = false,
 		.doorbell_mode_switch = false,
-		.auto_queue = true,
+		.auto_queue = false,
 	},
 /* All MHI satellite config to be at the end of data struct */
 #if IS_ENABLED(CONFIG_MHI_SATELLITE)
@@ -455,7 +455,7 @@ static const struct mhi_channel_config cnss_mhi_channels_genoa[] = {
 		.lpm_notify = false,
 		.offload_channel = false,
 		.doorbell_mode_switch = false,
-		.auto_queue = true,
+		.auto_queue = false,
 	},
 };
 
