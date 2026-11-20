@@ -5386,7 +5386,7 @@ int __init kgsl_core_init(void)
 	 * take the device mutex
 	 */
 	kgsl_driver.lockless_workqueue = alloc_workqueue("kgsl-lockless-work",
-		WQ_UNBOUND | WQ_MEM_RECLAIM, 0);
+		WQ_UNBOUND | WQ_MEM_RECLAIM | WQ_HIGHPRI, 0);
 
 	if (!kgsl_driver.lockless_workqueue) {
 		pr_err("kgsl: Failed to allocate lockless workqueue\n");
